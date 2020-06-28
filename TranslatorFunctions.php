@@ -2,7 +2,7 @@
 namespace Translator\Base;
 
 class Functions{
-  private $logger = new \Logging\TranslatorLogging;
+  private $logger = new TranslatorLogging;
   private $databaseConnect = "";
   private $databaseConnectInitalized = 0;
   private $databaseRequest = "";
@@ -33,5 +33,9 @@ class Functions{
     $this->databaseRequest = $this->databaseConnect->prepare("SELECT translatedKey FROM ".$this->databaseTable." WHERE key = ".$key." AND language = ".$language);
     $this->databaseRequest->execute();
     return $this->databaseRequest->fetchAll(PDO::FETCH_ASSOC)[0]["translatedKey"];
+  }
+
+  public function __getTranslateWithJSON($key, $language){
+    $jsonFile = fopen("", "a+");
   }
 }
