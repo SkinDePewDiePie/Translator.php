@@ -7,7 +7,13 @@ class Functions{
   private $databaseConnectInitalized = 0;
   private $databaseRequest = "";
   private $databaseTable = "";
+  private $language = "";
  
+  public function __automaticallyDetectLanguage(){
+    $geoip = geoip_region_by_name($_SERVER["REMOTE_ADDR"]);
+    $this->language = strtolower($geoip["country_code"])."_".strtoupper($geoip["region"]);
+  }
+
   public function __connectToDatabase($databaseType, $databaseHost, $databaseName, $databaseUser, $databaseUserPassword, $databaseTable){
     if($databaseType === "" || $databaseHost === "" || $databaseName === "" || $databaseUser === "" || $databaseUserPassword === "" || $databaseTable === "") return $this->logger->error("SQL Connect is not valid !");
     $this->databaseConnect = new PDO($databaseType."host=".$databaseHost."dbname=".$databaseName, $databaseUser, $databaseUserPassword);
@@ -29,6 +35,7 @@ class Functions{
 
   public function __getTranslateWithSQL($key, $language){
     if(!$this->databaseConnectInitalized) return $this->logging->error("SQL Connection is not initalized !");
+    if($this->language !=== "") $language = $this->language;
 
     $this->databaseRequest = $this->databaseConnect->prepare("SELECT translatedKey FROM ".$this->databaseTable." WHERE key = ".$key." AND language = ".$language);
     $this->databaseRequest->execute();
@@ -36,6 +43,8 @@ class Functions{
   }
 
   public function __getTranslateWithJSON($key, $language){
+    if($this->language !=== "") $language = $this->language;
+
     $jsonFileName = dirname(__FILE__)."/languages/".$language.".json"
     $jsonFile = fopen($jsonFileName, "a+");
     $jsonContent = json_decode(fread($jsonFile, filesize($jsonFileName)));
