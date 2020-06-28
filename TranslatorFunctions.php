@@ -36,6 +36,9 @@ class Functions{
   }
 
   public function __getTranslateWithJSON($key, $language){
-    $jsonFile = fopen("", "a+");
+    $jsonFileName = dirname(__FILE__)."/languages/".$language.".json"
+    $jsonFile = fopen($jsonFileName, "a+");
+    $jsonContent = json_decode(fread($jsonFile, filesize($jsonFileName)));
+    return $jsonContent[$key];
   }
 }
