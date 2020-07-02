@@ -15,9 +15,9 @@
         <option value="null" id="databaseTypeSelected" selected>-- Choose --</option>
         <option value="mysql">MySQL/MariaDB</option>
       </select><br>
-      <label for="databaseName">Database Name: </label><input type="text" name="databaseName" id="databaseName" placeholder="Database Name" value="<?= $_POST["databaseName"] ?>">
-      <label for="databaseUser">Database User: </label><input type="text" name="databaseUser" id="databaseUser" placeholder="Database User" value="<?= $_POST["databaseUser"] ?>">
-      <label for="databaseUserPassword">Database User Password: </label><input type="password" name="databaseUserPassword" id="databaseUserPassword" placeholder="Database User Password">
+      <label for="databaseName">Database Name: </label><input type="text" name="databaseName" id="databaseName" placeholder="Database Name" value="<?= $_POST["databaseName"] ?>"><br>
+      <label for="databaseUser">Database User: </label><input type="text" name="databaseUser" id="databaseUser" placeholder="Database User" value="<?= $_POST["databaseUser"] ?>"><br>
+      <label for="databaseUserPassword">Database User Password: </label><input type="password" name="databaseUserPassword" id="databaseUserPassword" placeholder="Database User Password"><br>
       <label for="databaseTable">Database Table: </label><input type="text" name="databaseTable" id="databaseTable" placeholder="Database Table" value="<?= $_POST["databaseTable"] ?>">
     </form>
     <script src="js/script.js"></script>
