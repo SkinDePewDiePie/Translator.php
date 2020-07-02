@@ -5,8 +5,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <header style="width: 1600px; height: 800px;">
-      <img src="image/logo.png" style="width: 1600px; height: 800px; align: center;" alt="Translator Logo">
+    <header id="header">
+      <img src="image/logo.png" id="logo" alt="Translator Logo">
     </header>
     <p id="collectInfos">We need to collect some infos</p>
     <form method="POST">
