@@ -30,6 +30,7 @@ if(issetAndNotEmpty($_POST["databaseType"]) && issetAndNotEmpty($_POST["database
       $success = "Created the translatorTest.php file located at: ".dirname(__FILE__)."/translatorTest.php !";
     } else{
       $error = "Cannot create the table ! Check if the user have permission `CREATE TABLE`";
+    }
   } else{
     $error = "Cannot connect to the database !";
   }
