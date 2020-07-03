@@ -1,5 +1,6 @@
 var collectInfos = document.getElementById("collectInfos");
-var databaseTypeSelected = document.getElementById("databaseTypeSelected");
+var databaseType = document.getElementById("databaseType");
+var databaseTypeChoose = document.getElementById("databaseTypeChoose");
 
 for(var i = 0; i < 3; i++){
   if(i === 0) collectInfos.innerHTML = `${collectInfos.innerHTML}.`;
@@ -10,3 +11,4 @@ for(var i = 0; i < 3; i++){
   }
 }
 
+if(databaseType.selectedIndex !== 0) databaseTypeChoose.style = "display: none;"
