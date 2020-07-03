@@ -26,7 +26,7 @@ if(isset($_POST["databaseConnect"])){
         fwrite($translatorTest, "require(dirname(__FILE__).\"/Translator.php/TranslatorFunctions.php\");\n\n");
         fwrite($translatorTest, "$translator = new \\Translator\\Base\\TranslatorFunctions(dirname(__FILE__));\n");
         if(extension_loaded("geoip")) fwrite($translatorTest, "$translator->__automaticallyDetectLanguage();");
-        fwrite($translatorTest, "$translator->__connectToDatabase(\"".$databaseType."\", \"".$databaseHost."\", \"".$databaseName."\", \"".$databaseUser."\", \"".$databaseUserPassword."\", \"".$databaseTable."\")");
+        fwrite($translatorTest, "$translator->__connectToDatabase(\"".$databaseType."\", \"".$databaseHost."\", \"".$databaseName."\", \"".$databaseUser."\", \"".$databaseUserPassword."\", \"".$databaseTable."\");");
         fclose($translatorTest);
 
         $success = "Created the translatorTest.php file located at: ".dirname(__FILE__)."/translatorTest.php !";
