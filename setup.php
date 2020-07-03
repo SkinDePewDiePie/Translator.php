@@ -21,6 +21,7 @@ if(isset($_POST["databaseConnect"])){
       $tableCreateRequest = $testDatabaseConnect->prepare("CREATE TABLE IF NOT EXISTS `".$databaseTable."` ( textKey VARCHAR(255), translatedKey VARCHAR(255), language VARCHAR(255))");
       if($tableCreateRequest->execute()){
         $translatorTest = fopen(dirname(__FILE__)."/translatorTest.php", "a+");
+        ftruncate($translatorTest, 0);
         fwrite($translatorTest, "<?php\n");
         fwrite($translatorTest, "require(dirname(__FILE__).\"/Translator.php/TranslatorFunctions.php\");\n\n");
         fwrite($translatorTest, "$translator = new \\Translator\\Base\\TranslatorFunctions(dirname(__FILE__));\n");
