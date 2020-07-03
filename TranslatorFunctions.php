@@ -70,6 +70,7 @@ class Functions{
     $jsonFileName = $this->languagesDir."/languages/".$language.".json";
     $jsonFile = fopen($jsonFileName, "a+");
     $jsonContent = json_decode(fread($jsonFile, filesize($jsonFileName)), true);
+    fclose($jsonFile);
     return $jsonContent[$key];
   }                                                                                                                                                                                           
 }     
