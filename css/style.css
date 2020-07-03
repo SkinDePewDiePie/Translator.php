@@ -6,3 +6,11 @@
 #header #logo{
   align-text: center;
 }
+
+#error{
+  color: red;
+}
+
+#success{
+  color: green; 
+}
