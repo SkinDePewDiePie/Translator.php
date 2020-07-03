@@ -11,8 +11,8 @@
     <p id="collectInfos">We need to collect some infos</p>
     <form method="POST">
       <label for="databaseType">Database Type: </label>
-      <select id="databaseType" name="databaseType">
-        <option value="null" id="databaseTypeSelected" selected>-- Choose --</option>
+      <select id="databaseType" name="databaseType" id="databaseTypeSelected">
+        <option value="null" selected>-- Choose --</option>
         <option value="mysql">MySQL/MariaDB</option>
       </select><br>
       <label for="databaseName">Database Name: </label><input type="text" name="databaseName" id="databaseName" placeholder="Database Name" value="<?= $_POST["databaseName"] ?>"><br>
