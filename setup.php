@@ -8,7 +8,7 @@ $success = "";
 
 if(isset($_POST["databaseConnect"])){
   if(issetAndNotEmpty($_POST["databaseType"]) && issetAndNotEmpty($_POST["databaseHost"]) && issetAndNotEmpty($_POST["databaseName"]) && issetAndNotEmpty($_POST["databaseUser"]) && issetAndNotEmpty($_POST["databaseUserPassword"]) && issetAndNotEmpty($_POST["databaseTable"])){
-    $databaseType = htmlspecialchars(strip_tags($_POST["databaseType"])) != "null" ? htmlspecialchars(strip_tags($_POST["databaseType"])) : null;
+    $databaseType = htmlspecialchars(strip_tags($_POST["databaseType"])) != "null" ? htmlspecialchars(strip_tags($_POST["databaseType"])) : "mysql";
     $databaseHost = htmlspecialchars(strip_tags($_POST["databaseHost"]));
     $databaseName = htmlspecialchars(strip_tags($_POST["databaseName"]));
     $databaseUser = htmlspecialchars(strip_tags($_POST["databaseUser"]));
@@ -18,7 +18,7 @@ if(isset($_POST["databaseConnect"])){
     $testDatabaseConnect = new PDO($databaseType.":host=".$databaseHost.";dbname=".$databaseName, $databaseUser, $databaseUserPassword);
 
     if($testDatabaseConnect){
-      $tableCreateRequest = $testDatabaseConnect->prepare("CREATE TABLE ".$databaseTable." IF NOT EXISTS ( textKey VARCHAR(255), translatedKey VARCHAR(255), language VARCHAR(255))");
+      $tableCreateRequest = $testDatabaseConnect->prepare("CREATE TABLE IF NOT EXISTS `".$databaseTable."` ( textKey VARCHAR(255), translatedKey VARCHAR(255), language VARCHAR(255))");
       if($tableCreateRequest->execute()){
         $translatorTest = fopen(dirname(__FILE__)."/translatorTest.php", "a+");
         fwrite($translatorTest, "<?php\n");
