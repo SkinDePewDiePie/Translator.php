@@ -3,6 +3,9 @@ function issetAndNotEmpty($variable){
   return isset($variable) && !empty($variable) ? true : false;
 }
 
+$error = "";
+$success = "";
+
 if(issetAndNotEmpty($_POST["databaseType"]) && issetAndNotEmpty($_POST["databaseHost"]) && issetAndNotEmpty($_POST["databaseName"]) && issetAndNotEmpty($_POST["databaseUser"]) && issetAndNotEmpty($_POST["databaseUserPassword"]) && issetAndNotEmpty($_POST["databaseTable"])){
   $databaseType = htmlspecialchars(strip_tags($_POST["databaseType"])) != "null" ? htmlspecialchars(strip_tags($_POST["databaseType"])) : null;
   $databaseHost = htmlspecialchars(strip_tags($_POST["databaseHost"]));
