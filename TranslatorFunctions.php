@@ -25,15 +25,13 @@ class Functions{
   }
   
   public function __automaticallyDetectLanguage(){
-    $geoip = geoip_region_by_name($_SERVER["REMOTE_ADDR"]);
-    $this->language = strtolower($geoip["country_code"])."_".strtoupper($geoip["region"]);
-  }
+    $this->language = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
+  }  
 
-  public function __automaticallyDetectLanguage(){
-    if(!extension_loaded("geoip")) return $this->logger->error("You need to enable GeoIP module !");
-    $geoip = geoip_region_by_name($_SERVER["REMOTE_ADDR"]);
-    $this->language = strtolower($geoip["country_code"])."_".strtoupper($geoip["region"]);
-  }                                                                                                                                                                                           
+  public function __setLanguage($language){
+    if($language === "") return $this->logger->error("You need to set a language !");
+    $this->language = $language;
+  }                                                                                                                                                                               
                                                                                                                                                                                               
   public function __connectToDatabase($databaseType, $databaseHost, $databaseName, $databaseUser, $databaseUserPassword, $databaseTable){
     if($databaseType === "" || $databaseHost === "" || $databaseName === "" || $databaseUser === "" || $databaseUserPassword === "" || $d
